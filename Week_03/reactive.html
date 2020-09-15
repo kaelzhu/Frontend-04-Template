@@ -1,0 +1,93 @@
+<input type="range" name="" id="r" min="0" max="255" />
+<input type="range" name="" id="g" min="0" max="255" />
+<input type="range" name="" id="b" min="0" max="255" />
+
+<div id="color" style="width: 100px; height: 100px"></div>
+<script>
+	const obj = {
+		r: 0,
+		g: 0,
+		b: 0,
+	}
+
+	let callbacks = new Map()
+	let reactivities = new Map()
+
+	let usedReactivities = []
+
+	let po = reactive(obj)
+
+	const inputR = document.getElementById('r')
+	const inputG = document.getElementById('g')
+	const inputB = document.getElementById('b')
+	const color = document.getElementById('color')
+
+	inputR.addEventListener('input', e => {
+		let value = e.target.value
+		po.r = value
+	})
+	inputG.addEventListener('input', e => {
+		let value = e.target.value
+		po.g = value
+	})
+	inputB.addEventListener('input', e => {
+		let value = e.target.value
+		po.b = value
+	})
+
+	effect(() => {
+		inputR.value = po.r
+		inputG.value = po.g
+		inputB.value = po.b
+		color.style.backgroundColor = `rgb(${po.r}, ${po.g}, ${po.b})`
+	})
+
+	function effect(callback) {
+		usedReactivities = []
+		callback()
+
+		// r [obj, prop]
+		for (let r of usedReactivities) {
+			if (!callbacks.has(r[0])) {
+				callbacks.set(r[0], new Map())
+			}
+			if (!callbacks.get(r[0]).has(r[1])) {
+				callbacks.get(r[0]).set(r[1], [])
+			}
+			callbacks.get(r[0]).get(r[1]).push(callback)
+		}
+	}
+
+	function reactive(obj) {
+		if (reactivities.has(obj)) {
+			return reactivities.get(obj)
+		}
+
+		let proxy = new Proxy(obj, {
+			set(obj, prop, val) {
+				obj[prop] = val
+				if (callbacks.get(obj)) {
+					if (callbacks.get(obj).get(prop)) {
+						for (let c of callbacks.get(obj).get(prop)) {
+							c()
+						}
+					}
+				}
+				return obj[prop]
+			},
+			get(obj, prop) {
+				// console.log(obj[prop])
+				if (typeof obj[prop] === 'object') {
+					return reactive(obj[prop])
+				}
+
+				usedReactivities.push([obj, prop])
+				return obj[prop]
+			},
+		})
+
+		reactivities.set(obj, proxy)
+
+		return proxy
+	}
+</script>

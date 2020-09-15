@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Trie</title>
+	</head>
+	<body>
+		<script>
+			class Trie {
+				constructor() {
+					this.root = Object.create(null)
+					this.$ = Symbol('$')
+				}
+
+				insert(word) {
+					let node = this.root
+					for (let c of word) {
+						if (!node[c]) {
+							node[c] = Object.create(null)
+						}
+						node = node[c]
+					}
+					if (!(this.$ in node)) node[this.$] = 0
+					node[this.$]++
+				}
+
+				most() {
+					let max = 0
+					let maxWord = null
+					let visit = (node, word) => {
+						if (node[this.$] > max) {
+							max = node[this.$]
+							maxWord = word
+						}
+						for (let c in node) {
+							visit(node[c], word + c)
+						}
+					}
+					visit(this.root, '')
+					return [maxWord, max]
+				}
+			}
+			function randomWord(length) {
+				let s = ''
+				let i = 0
+				while (i < length) {
+					s += String.fromCharCode(
+						Math.random() * 26 + 'a'.charCodeAt(0)
+					)
+					i++
+				}
+				return s
+			}
+
+			let t = new Trie()
+			for (let i = 0; i < 10000; i++) {
+				t.insert(randomWord(4))
+			}
+		</script>
+	</body>
+</html>

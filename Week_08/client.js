@@ -244,9 +244,9 @@ void (async function () {
 
 	let dom = parser.parseHtml(response.body)
 
-	let viewport = images(500, 300)
+	let viewport = images(800, 600)
 
-	render(viewport, dom.children[0].children[3].children[1].children[3])
+	render(viewport, dom)
 
 	viewport.save('index.jpg')
 	// console.log(dom)

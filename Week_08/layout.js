@@ -28,12 +28,6 @@ function layout(element) {
 		return
 	}
 
-	let items = element.children.filter(e => e.type == 'element')
-
-	items.sort((a, b) => {
-		return (a.order || 0) - (b.order || 0)
-	})
-
 	let style = elementStyle;
 
 	['width', 'height'].forEach(size => {
@@ -104,13 +98,19 @@ function layout(element) {
 		crossStart = 'left'
 		crossEnd = 'right'
 	}
-	if (style.flexWrap = 'wrap-reverse') {
+	if (style.flexWrap == 'wrap-reverse') {
 		[crossStart, crossEnd] = [crossEnd, crossStart]
 		crossSign = -1
 	} else {
 		crossBase = 0
 		crossSign = +1
 	}
+
+	let items = element.children.filter(e => e.type == 'element')
+
+	// items.sort((a, b) => {
+	// 	return (a.order || 0) - (b.order || 0)
+	// })
 
 	// itemStyle not exist ?
 	let autoMainSize = false
@@ -135,7 +135,7 @@ function layout(element) {
 		const item = items[i]
 		const itemStyle = getStyle(item)
 
-		if (itemStyle[mainSize] === null) {
+		if (itemStyle[mainSize] === null || itemStyle[mainSize] == (void 0)) {
 			itemStyle[mainSize] = 0
 		}
 
@@ -276,7 +276,8 @@ function layout(element) {
 		crossBase = 0
 	}
 
-	// let lineSize = style[crossSize] / flexLines.length
+	let lineSize = style[crossSize] / flexLines.length
+
 	let step
 	if (style.alignContent == 'flex-start') {
 		crossBase += 0
@@ -312,7 +313,7 @@ function layout(element) {
 
 			let align = itemStyle.alignSelf || style.alignItems
 
-			if (itemStyle[crossSize] === null) {
+			if (itemStyle[crossSize] === null || itemStyle[crossSize] === (void 0)) {
 				itemStyle[crossSize] = align == 'stretch' ? lineCrossSize : 0
 			}
 			if (align == 'flex-start') {
@@ -329,7 +330,7 @@ function layout(element) {
 			}
 			if (align == 'stretch') {
 				itemStyle[crossStart] = crossBase
-				itemStyle[crossEnd] = itemStyle[crossStart] + crossSign * lineCrossSize
+				itemStyle[crossEnd] = itemStyle[crossStart] + crossSign * (itemStyle[crossSize] || lineCrossSize)
 				itemStyle[crossSize] = crossSign * (itemStyle[crossEnd] - itemStyle[crossStart])
 			}
 		}

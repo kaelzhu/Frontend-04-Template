@@ -28,6 +28,7 @@ const server = http.createServer((request, response) => {
 				background-color: rgb(255,255,0);
 			}
 			.myclass {
+				flex: 1;
 				background-color: rgb(255,0,255);
 			}
 		</style>

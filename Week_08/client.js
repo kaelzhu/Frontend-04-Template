@@ -244,7 +244,7 @@ void (async function () {
 
 	let dom = parser.parseHtml(response.body)
 
-	let viewport = images(800, 600)
+	let viewport = images(500, 300)
 
 	render(viewport, dom)
 

@@ -1,1 +1,76 @@
-学习笔记
+### CSS
+---
+-	权威的版本 
+	-	css2.1
+	-	产生式	
+	-	CDO CDC 将css当做html的注释
+	-	ruleset level3 level4
+		-	> rule
+			-	> selector
+				-	selector_group
+				-	selector
+					-	\>, sp, +, ~, ||(level 4)
+				-	simple_selector
+					-	type, *, \., #, [], :, ::, :not()
+					-	svg|a
+				-	combined_selector 复合选择器
+				-	复杂选择器
+			-	> declaration
+				-	key
+					-	variable
+					-	properties
+				-	value
+					-	variable
+					-	calc
+					-	number
+					-	length
+					-	...
+		-	> @rule
+			-	@media
+			-	@page
+				-	print
+			-	@charset
+			-	@import
+			---
+			-	@counter-style
+				-	list
+			-	@keyframes
+			-	@fontface
+				-	web font
+				-	icon font
+			-	@supports
+				-	css3
+			-	@namespace
+				-	html, svg ...
+		-	> specification
+			-	\*
+			-	type pesudoelement
+			-	class attr pesudoclass
+			-	id
+			-	inline
+			-	!important
+		-	> pesudo class
+			-	:any-link
+			-	:link :visited
+			-	:hover :active
+			-	:focus
+			-	:target
+			-	tree
+				-	:empty
+				-	:nth-child()
+				-	:nth-last-child()
+				-	:first-child :last-child :only-child
+				-	endTag 时才有结果的伪类
+			-	logic
+				-	:not()
+				-	:where :has
+		-	> pesudo element
+			-	::before ::after
+				-	无中生有
+			-	::first-line ::first-letter
+				-	用一个不存在的元素把文本括了起来
+				-	::first-letter 比 ::first-line 多出了这些属性
+					-	float vertical-align box-model
+---
+为什么 first-letter 可以设置 float 之类的, 而 first-line 不行呢 ?
+first-letter 是可以确定的, 而 first-line 是不确定的, 对其进行 某些属性的计算性能开销过大

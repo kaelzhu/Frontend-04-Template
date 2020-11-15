@@ -1,1 +1,61 @@
-学习笔记
+### HTML
+---
+-	XML 
+-	SGML
+-	DTD (data type definition)
+	-	nbsp 不用直接使用
+	-	css 中 white-sapce
+	-	quto amp lt gt
+	-	namespace
+-	语义
+	-	abbr
+	-	strong 
+	-	em 语气
+	-	figure figurecaption
+	-	aside
+	-	nav
+	-	dfn 定义
+	-	pre
+	-	samp
+-	语法
+	-	element
+	-	text
+	-	comments
+	-	processingInstruction
+	-	CDATA <!CDATA[]>
+		-	不需要考虑转义
+	-	字符引用
+		-	&#333
+		-	&amp;
+-	事件 API
+	-	addEventListener(eventName, options)
+		-	capture 捕获
+		-	bubble 冒泡
+-	DOM API
+	-	traversal api 不用
+	-	节点
+		-	node element	
+		-	导航类操作
+		-	修改操作
+		-	高级操作
+			-	compareDocumentPosition
+			-	contains
+			-	isEqualNode
+			-	isSameNode
+			-	cloneNode
+	-	事件
+	-	range api 易用性差
+		-	html 编辑器
+		-	living collection
+		-	getRangeAt(0)
+-	BOM API
+-	CSSOM
+	-	通过cssom可以修改伪元素的style
+	-	CSSStyleRule
+	-	stylesheets
+	-	addCssRule
+	-	getComputedStyle()
+	-	CSSOM View
+		-	window.devicePixelRatio
+		-	window.open()
+		-	layout

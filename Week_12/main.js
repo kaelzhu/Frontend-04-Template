@@ -34,7 +34,7 @@ class Carousel extends Component {
                     while (pos < 0) {
                         pos += children.length
                     }
-                    
+                    pos %= children.length
                     children[pos].style.transition = 'none'
                     children[pos].style.transform = `translateX(${- pos * 500 + offset * 500 + x % 500}px)`
                 }
@@ -49,6 +49,7 @@ class Carousel extends Component {
                     while (pos < 0) {
                         pos += children.length
                     }
+                    pos %= children.length
 
                     children[pos].style.transition = ''
                     children[pos].style.transform = `translateX(${- pos * 500 + offset * 500}px)`

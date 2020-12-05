@@ -1,1 +1,23 @@
-学习笔记
+## Gesture
+---
+-	touch (start -> move ? -> end)
+	-	pan
+		-	flick
+			-	速度的判断 > 1.5
+		-	swipe
+	-	press
+	-	touch 事件 必须从 start 开始
+	-	touch 事件的 event 有多个触点
+		-	changedTouches
+			-	identifier
+	-	touchstart
+	-	touchmove
+	-	touchend
+	-	touchcancel
+		-	特殊事件会打断 touch
+		-	alert...
+-	mouse event 不能转化成 touch event,	click event 可以
+-	mousedown 的时候是分按键的(event.button), 然而 mousemove 的时候是 不分的(event.buttons)
+	-	采用的是 掩码 的方式 0b11111 ~ 0b00001
+	-	button 的 顺序
+-	## context 

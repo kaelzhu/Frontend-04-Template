@@ -47,6 +47,7 @@ CSS选择器选中的__Element__ ,在排版时可能产生多个_Box___ .
 	-   float, clear
     	-   影响多行盒的尺寸
     	-   float 堆叠现象
+		-	clear => float 的换行
 -	> flex
 	-	收集盒进行
 	-	计算盒在主轴方向的排布

@@ -1,0 +1,15 @@
+{
+  "name": "generator-toytool",
+  "version": "1.0.0",
+  "description": "yeoman-generator",
+  "main": "generators/app/index.js",
+  "scripts": {},
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^4.12.0"
+  }
+}

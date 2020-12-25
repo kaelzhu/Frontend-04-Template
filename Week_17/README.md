@@ -13,8 +13,14 @@
 	-	npm install nyc -D
 	-	nyc and babel
 	-	.nycrc
--	nodeJS debug
+-	nodeJs debug
 	-	runtimeArgs
+		-	node args
 	-	args
+		-	shell args
 	-	program
 	-	sourceMaps
+-	100% 的函数, 90% 的行
+---
+## 集成到generator
+---

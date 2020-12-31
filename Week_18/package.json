@@ -1,0 +1,18 @@
+{
+  "name": "week_18",
+  "version": "1.0.0",
+  "description": "concurrently",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run publish-server\" \"npm run server\"",
+    "publish-server": "npm start --prefix publish-server",
+    "server": "npm start --prefix server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

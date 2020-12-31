@@ -1,1 +1,23 @@
-学习笔记
+### 发布系统
+---
+-	publish tool => publish server => server
+---
+-	publish server
+	-	node server
+	-	express-generator
+-	publish tool
+-	流式 stream
+	-	stream.readable
+		-	close event
+		-	data event
+	-	stream.writable
+	-	pipe
+		-	简化流与流之间的操作代码
+-	http RFC标准
+	-	content-type: application/octet-stream, application/x-www-form-urlencoded
+-	scp ssh
+-	压缩包
+	-	Archiver
+	-	unzipper
+-	鉴权
+	-	oAuth
